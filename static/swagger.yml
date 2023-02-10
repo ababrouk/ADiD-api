@@ -1,0 +1,146 @@
+openapi: 3.0.3
+info:
+  title: Arabic Dialect Identification API
+  version: 1.0.0
+  description: Arabic Dialect Identification API
+servers:
+- url: /api
+tags:
+- name: General API
+  description: methods of general API
+- name: Twitter API
+  description: methods of twitter API
+
+components:
+  schemas:
+    request:
+      type: object
+      properties:
+        request:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              text:
+                type: string
+    results:
+      type: object
+      properties:
+        info:
+          type: array
+          items:
+            type: object
+            properties:
+              dailect:
+                type: number
+                format: double
+                description: percentage of the dailect
+        result:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              text:
+                type: string
+              label:
+                type: string
+paths:
+  /general:
+    post:
+      tags:
+      - General API
+      summary: Get text dialect from json file
+      description: Get text dialect from json file
+      requestBody:
+        description: Json file containing text to classify
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/request'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/results'
+  /twitter/{by_filter}/{target_name}:
+    get:
+      tags:
+      - Twitter API
+      summary: Get All tweets from user/hashtag
+      description: Get All tweets from user/hashtag
+      parameters:
+      - name: by_filter
+        in: path
+        type: string
+        schema:
+          enum:
+          - by_user
+          - by_hashtag
+        required: true
+        description: |-
+          This parameter will decide whether to get tweets
+          from Twitter users or hashtags
+
+      - name: target_name
+        in: path
+        type: string
+        description: |-
+          This parameter will take the name of Twitter user
+          or Twitter hashtag
+
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/results'
+
+  /twitter/{by_filter}/{target_name}/{dialect}:
+    get:
+      tags:
+      - Twitter API
+      summary: Get tweets by dialect from user/hashtag
+      description: Get tweets by dialect from user/hashtag
+      parameters:
+      - name: by_filter
+        in: path
+        type: string
+        schema:
+          enum:
+          - by_user
+          - by_hashtag
+        required: true
+        description: |-
+          This parameter will decide whether to get tweets
+          from Twitter users or hashtags
+
+      - name: target_name
+        in: path
+        type: string
+        description: |-
+          This parameter will take the name of Twitter user
+          or Twitter hashtag
+
+      - name: dialect
+        in: path
+        type: string
+        schema:
+          enum: [ALE, ALG, ALX, AMM, ASW, BAG, BAS, BEI, BEN, CAI, DAM, DOH, FES, JED, JER, KHA, MOS, MSA, MUS, RAB, RIY, SAL, SAN, SFX, TRI, TUN]
+        required: true
+        description: "* `ALE` - Aleppo\n * `ALG` - Algiers\n * `ALX` - Alexandria\n * `AMM` - Amman\n * `ASW` - Aswan\n * `BAG` - Baghdad \n * `BAS` - Basra \n * `BEI` - Beirut\n * `BEN` - Benghazi \n * `CAI` - Cairo\n * `DAM` - Damascus \n * `DOH` - Doha\n * `FES` - Fes\n * `JED` - Jeddah\n * `JER` - Jerusalem\n * `KHA` - Khartoum\n * `MOS` - Mosul\n * `MSA` - Modern Standered Arabic\n * `MUS` - Muscat \n * `RAB` - Rabat\n * `RIY` - Riyadh \n * `SAL` - Salt \n * `SAN` - Sana’a\n * `SFX` - Sfax\n * `TRI` - Tripoli\n * `TUN` - Tunis"
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/results'
+
