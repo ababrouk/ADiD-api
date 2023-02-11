@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Vs code generated headers -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="/static/img/64x64_ADC_icon.png">
+  <title>ADiD Home Page</title>
+
+  <!-- import bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+  <!-- import bootstrap icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+  <style>
+    .feature {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 3rem;
+      width: 3rem;
+      font-size: 1.5rem;
+    }
+    html{
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- Here is the navbar for the main page -->
+  <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand fw-bolder text-white" href="#"><img src="/static/img/64x64_ADC_icon.png">&nbsp &nbsp ADiD
+        API</a>
+      <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+        data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavId">
+        <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="/api/doc" aria-current="page">Documentation</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">API Features</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownId">
+              <a class="dropdown-item" href="#general_section">General API</a>
+              <a class="dropdown-item" href="#twitter_section">Twitter API</a>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="bg-dark py-5">
+    <div class="container px-5">
+      <div class="row gx-5 align-items-center justify-content-center">
+        <div class="col-lg-8 col-xl-7 col-xxl-6">
+          <div class="my-5 text-center text-xl-start">
+            <h1 class="display-5 fw-bolder text-white mb-2">Arabic Dialect Identification (ADiD)</h1>
+            <p class="lead fw-normal text-white-50 mb-4">Identify Arabic dialects of text, Twitter users
+            ,and Twitter hashtag, using Machine Learning Approach.</p>
+            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
+              <a class="btn bg-light btn-lg px-4 me-sm-3" href="#general_section">Try our API</a>
+              <a class="btn btn-outline-light btn-lg px-4" href="/api/doc">Documentation</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- API's Features -->
+
+  <!-- General API -->
+  <section class="py-5" id="general_section">
+
+    <h1 class="display-4 fw-bolder text-center pb-5">General API</h1>
+
+    <div class="container px-5 my-5">
+      <div class="row gx-5">
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h2 class="fw-bolder mb-0">General API Features</h2>
+        </div>
+        <div class="col-lg-8">
+          <div class="row gx-5 row-cols-1 row-cols-md-2">
+            <div class="col mb-5 h-100">
+              <div class="feature bg-dark bg-gradient text-white rounded-3 mb-3"><i class="bi bi-gear"></i>
+              </div>
+              <h2 class="h5">General API</h2>
+              <p class="mb-0">Take JSON file & output predicted dialects of text.</p>
+            </div>
+            <div class="col mb-5 h-100">
+              <div class="feature bg-dark bg-gradient text-white rounded-3 mb-3"><i class="bi bi-bar-chart-steps"></i>
+              </div>
+              <h2 class="h5">Dialect Distribution</h2>
+              <p class="mb-0">Display distribution info of the identified dialects for the given JSON file.</p>
+            </div>
+            <div class="col mb-5 mb-md-0 h-100">
+              <div class="feature bg-dark bg-gradient text-white rounded-3 mb-3"><i class="bi bi-percent"></i></div>
+              <h2 class="h5">Prediction Percentage</h2>
+              <p class="mb-0">Display prediction probability for all possible dialects in text.</p>
+            </div>
+            <div class="col mb-5 mb-md-0 h-100">
+              <div class="feature bg-dark bg-gradient text-white rounded-3 mb-3"><i class="bi bi-wrench"></i></div>
+              <h2 class="h5">Press the button to try the API</h2>
+              <a type="button" data-bs-toggle="modal" data-bs-target="#generalModal" class="btn btn-secondary">API
+                example</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Twitter API -->
+  <section class="py-5 bg-light" id="twitter_section">
+
+    <h1 class="display-4 fw-bolder text-center pb-5">Twitter API</h1>
+
+    <div class="container px-5 my-5 ">
+      <div class="row gx-5">
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h2 class="fw-bolder mb-0">Twitter API Features</h2>
+        </div>
+        <div class="col-lg-8">
+          <div class="row gx-5 row-cols-1 row-cols-md-2">
+            <div class="col mb-5 h-100">
+              <div class="feature bg-dark bg-gradient text-white rounded-3 mb-3"><i class="bi bi-twitter"></i>
+              </div>
+              <h2 class="h5">Twitter API</h2>
+              <p class="mb-0">Take either twitter @user or #hashtag, and output predicted Arabic dialects.</p>
+            </div>
+            <div class="col mb-5 h-100">
+              <div class="feature bg-dark bg-gradient text-white rounded-3 mb-3"><i class="bi bi-bar-chart-steps"></i>
+              </div>
+              <h2 class="h5">Dialect Distribution</h2>
+              <p class="mb-0">Display distribution info of the identified dialects for the given JSON file.</p>
+            </div>
+            <div class="col mb-5 mb-md-0 h-100">
+              <div class="feature bg-dark bg-gradient text-white rounded-3 mb-3"><i class="bi bi-percent"></i></div>
+              <h2 class="h5">Predection Percentage</h2>
+              <p class="mb-0">Display prediction probability for all possible dialects in text.</p>
+            </div>
+            <div class="col mb-5 mb-md-0 h-100">
+              <div class="feature bg-dark bg-gradient text-white rounded-3 mb-3"><i class="bi bi-wrench"></i></div>
+              <h2 class="h5">Press the button to try the API.</h2>
+              <a type="button" data-bs-toggle="modal" data-bs-target="#twitterModal" class="btn btn-secondary">API
+                example</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- modal for general API -->
+  <div class="modal modal-lg fade" id="generalModal" tabindex="-1" aria-labelledby="generalModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title display-4" id="generalModalLabel">General API</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="generalFormControlTextarea1" class="form-label">Enter Arabic text: </label>
+            <textarea class="form-control" id="generalFormControlTextarea1" placeholder="هنا يكتب النص العربي"
+              rows="3"></textarea>
+          </div>
+          <hr>
+          <div class="mt-3">
+            <p class="display-5">Result</p>
+          </div>
+          <!-- Loading -->
+          <div style="display: none;" id="generalResultloading" class="mt-3">
+            <div class="d-flex justify-content-center align-items-center">
+              <div class="spinner-border text-primary spinner-border-sm" role="status">
+                <span hidden class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          </div>
+          <!-- result datastyle="display: none;" -->
+          <div id="generalResultData" class="mt-3">
+            <!-- label percentige -->
+            <div id="generalPercentige">
+
+            </div>
+
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" onclick="generalAPI()" class="btn bg-dark btn-outline-light ">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- modal for twitter API -->
+  <div class="modal modal-lg fade" id="twitterModal" tabindex="-1" aria-labelledby="twitterModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title display-4" id="twitterModalLabel">Twitter API</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <label for="targetType">Select The Target:</label>
+          <select id="tw_target_type" class="form-select mb-4" aria-label="targetType">
+            <option selected value="by_user">By Twitter @User</option>
+            <option value="by_hashtag">By Twitter #Hashtag</option>
+          </select>
+          <label for="targetName">Name of The Target:</label>
+          <div class="input-group mb-2">
+            <span class="input-group-text" id="basic-addon1">@ OR #</span>
+            <input type="text" id="tw_target_name" class="form-control" placeholder="targetName" aria-label="targetName"
+              aria-describedby="basic-addon1">
+          </div>
+          <hr>
+          <div class="mt-3">
+            <p class="display-5">Result</p>
+          </div>
+          <!-- Loading -->
+          <div style="display: none;" id="twitterResultloading" class="mt-3">
+            <div class="d-flex justify-content-center align-items-center">
+              <div class="spinner-border text-primary spinner-border-sm" role="status">
+                <span hidden class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          </div>
+          <!-- result datastyle="display: none;" -->
+          <div id="twitterResultData" class="mt-3">
+            <!-- label percentige -->
+            <div id="twitterPercentige">
+
+            </div>
+
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" onclick="twitterAPI()" class="btn bg-dark btn-outline-light">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <footer class="bg-dark py-3">
+    <div class="container text-light">
+      <!-- content of the footer -->
+      <div class="container px-3 my-5">
+        <div class="row">
+          <div class="col-sm">
+            <h4>About Us</h4>
+            <p>
+              We are CS students from FCIT of KAU, and this is our senior project.
+            </p>
+          </div>
+          <div class="col-sm">
+            <h4>Team Members</h4>
+            <ul>
+              <li>Reyad Abdullah Alghamdi</li>
+              <li>Abdullah Babrouk</li>
+            </ul>
+          </div>
+          <div class="col-sm">
+            <h4>Project Supervisor</h4>
+            <ul>
+              <li>Dr. Ali AlKhathlan </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- bootstrap js -->
+  <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+
+  <script>
+
+    // general api modal
+    function generalAPI() {
+      var in_text = $("#generalFormControlTextarea1").val();
+      var load_ani = $("#generalResultloading");
+      var prog_element = $("#generalPercentige");
+
+      var sendInfo = '{ "request": [ { "id": "example", "text": "' + in_text + '" } ] }';
+      prog_element.empty();
+      load_ani.show();
+
+      jQuery.ajax({
+        url: '/api/general',
+        type: "POST",
+        data: sendInfo,
+        dataType: "json",
+        contentType: "application/json",
+        success: function (e) {
+          load_ani.hide();
+          var x = e.result[0].probability;
+          prog_element.empty();
+          prog_element.append('<p>Dialect Probability :</p>');
+          for (let index = 0; index < Object.keys(x).length; index++) {
+            const element = x[Object.keys(x)[index]];
+            prog_element.append('<div><lu><li>' + Object.keys(x)[index] + ' : ' + (' ' + (Number((x[Object.keys(x)[index]]*100).toFixed(2))) + '%') + '</li></lu></div>');
+          }
+          prog_element.show();
+        },
+        error: function (ajaxContext) {
+          load_ani.hide();
+          alert('error');
+        }
+
+      });
+    }
+    var x = null;
+    // twitter api modal
+    function twitterAPI() {
+      var target_type = $("#tw_target_type").val();
+      var target_name = $("#tw_target_name").val();
+      var load_ani = $("#twitterResultloading");
+      var prog_element = $("#twitterPercentige");
+
+      load_ani.show();
+      prog_element.empty();
+      jQuery.ajax({
+        url: '/api/twitter/' + target_type + '/' + target_name,
+        type: "GET",
+        success: function (e) {
+          load_ani.hide();
+          prog_element.empty();
+
+          
+          x = e.distribution;
+          prog_element.append('<p>Dialect Probability (For '+'200'+' tweets):</p>');
+            var temp_text = '';
+            for (let index = 0; index < Object.keys(x).length; index++) {
+              const element = x[Object.keys(x)[index]];
+              temp_text += ('<li>' + Object.keys(x)[index] + ' : ' + (' ' + (Number((x[Object.keys(x)[index]]).toFixed(2))) + '%') + '</li>');
+            }
+            temp_text = '<ul>' + temp_text + '</ul>'
+            prog_element.append(temp_text);
+          prog_element.show();
+        },
+        error: function (ajaxContext) {
+          load_ani.hide();
+          alert('error');
+        }
+
+      });
+    }
+
+  </script>
+
+</body>
+
+</html>
