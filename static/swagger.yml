@@ -1,0 +1,156 @@
+openapi: 3.0.3
+info:
+  title: Arabic Dialect Identification API
+  version: 1.0.0
+  description: Arabic Dialect Identification API
+servers:
+- url: /api
+tags:
+- name: General API
+  description: methods of general API
+- name: Twitter API
+  description: methods of twitter API
+
+components:
+  schemas:
+    request:
+      type: object
+      properties:
+        request:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              text:
+                type: string
+    results:
+      type: object
+      properties:
+        distribution:
+          type: array
+          items:
+            type: object
+            properties:
+              dialect:
+                type: number
+                format: double
+                description: prediction probability of the dialect
+        result:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              text:
+                type: string
+              label:
+                type: string
+              probability:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    dialect:
+                      type: number
+                      format: double
+                      description: prediction probability of the dialect
+paths:
+  /general:
+    post:
+      tags:
+      - General API
+      summary: Predict Arabic text dialect from JSON file
+      description: Predict Arabic text dialect from JSON file
+      requestBody:
+        description: JSON file containing Arabic text to identify.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/request'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/results'
+  /twitter/{by_filter}/{target_name}:
+    get:
+      tags:
+      - Twitter API
+      summary: Predict Arabic dialect of tweets from user/hashtag
+      description: Scrapes tweets from user/hashtag and return prediction probability.
+      parameters:
+      - name: by_filter
+        in: path
+        type: string
+        schema:
+          enum:
+          - by_user
+          - by_hashtag
+        required: true
+        description: |-
+          This parameter will decide whether to predict dialect of tweets
+          from Twitter users or hashtags.
+
+      - name: target_name
+        in: path
+        type: string
+        required: true
+        description: |-
+          This parameter will take Twitter username
+          or Twitter hashtag.
+
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/results'
+
+  /twitter/{by_filter}/{target_name}/{dialect}:
+    get:
+      tags:
+      - Twitter API
+      summary: Get tweets by dialect from user/hashtag
+      description: Get tweets by dialect from user/hashtag
+      parameters:
+      - name: by_filter
+        in: path
+        type: string
+        schema:
+          enum:
+          - by_user
+          - by_hashtag
+        required: true
+        description: |-
+          This parameter will decide whether to get tweets
+          from Twitter users or hashtags.
+
+      - name: target_name
+        in: path
+        type: string
+        required: true
+        description: |-
+          This parameter will take Twitter username or Twitter hashtag.
+
+      - name: dialect
+        in: path
+        type: string
+        schema:
+          enum: [Standard, Maghreb, Nile Basin, Levant, Gulf]
+        required: true
+        description: "Select The Arabic Dialect: \n* **Standard** - Modern Standard Arabic \n * **Maghreb** - Morocco, Algeria, Tunisia, Libya \n  * **Nile Basin** -  Egypt, Sudan \n  * **Levant** -  South Levant,  North Levant\n  * **Gulf** -  Gulf "
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/results'
+
