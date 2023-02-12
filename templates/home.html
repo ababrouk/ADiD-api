@@ -307,7 +307,7 @@
 
     // general api modal
     function generalAPI() {
-      var in_text = $("#generalFormControlTextarea1").val();
+      var in_text = $("#generalFormControlTextarea1").val().replace(/[\r\n]/gm, ' ');;
       var load_ani = $("#generalResultloading");
       var prog_element = $("#generalPercentige");
 
@@ -358,7 +358,7 @@
 
           
           x = e.distribution;
-          prog_element.append('<p>Dialect Probability (For '+'200'+' tweets):</p>');
+          prog_element.append('<p>Dialect Probability (For '+Object.keys(e.result).length+' tweets):</p>');
             var temp_text = '';
             for (let index = 0; index < Object.keys(x).length; index++) {
               const element = x[Object.keys(x)[index]];
