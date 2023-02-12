@@ -20,7 +20,7 @@ def get_by_type(method_type,query, limit= 200):
 def getTweets(query,numtweets):
   tweets_list = []
   for i, tweet in enumerate(tw.TwitterSearchScraper(query).get_items()):
-      if i >= numtweets-1:
+      if i >= numtweets:
           break
       
       if gm.data_prep(tweet.rawContent):    #if not null to list 
